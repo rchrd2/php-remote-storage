@@ -70,17 +70,18 @@ class Request
         } else {
             $requestScheme = $this->serverData['REQUEST_SCHEME'];
         }
+        $requestScheme = 'https';
 
         // server_name
         $serverName = $this->serverData['SERVER_NAME'];
 
         // port
         $serverPort = (int) $this->serverData['SERVER_PORT'];
-
+        //var_dump([$requestScheme, $serverPort]);exit;
         $usePort = false;
-        if ('https' === $requestScheme && 443 !== $serverPort) {
-            $usePort = true;
-        }
+        // if ('https' === $requestScheme && 443 !== $serverPort) {
+        //     $usePort = true;
+        // }
         if ('http' === $requestScheme && 80 !== $serverPort) {
             $usePort = true;
         }

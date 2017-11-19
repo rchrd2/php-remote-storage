@@ -2,3 +2,5 @@
 /config/*.yaml
 /config/views/*
 /data
+Makefile
+/web/apps/

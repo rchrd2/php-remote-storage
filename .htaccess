@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# Force https
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301] 
+
+
+# Pass through the "Authorization" header
+SetEnvIfNoCase ^Authorization$ "(.+)" HTTP_AUTHORIZATION=$1
+
+
+# mod rewrite
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteBase /
+RewriteRule ^(.*)$ index.php [QSA,L]
